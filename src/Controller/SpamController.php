@@ -30,8 +30,9 @@ class SpamController extends AbstractController
     }
 
     $emailParts = explode("@", $email);
+    $domain = $emailParts[1];
 
-    if (in_array($emailParts[1], self::SPAM_DOMAINS)) {
+    if (in_array($domain, self::SPAM_DOMAINS)) {
       return $this->json(['result' => 'spam']);
     }
 
